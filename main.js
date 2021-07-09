@@ -4,7 +4,9 @@ var rightWristX = 0;
 var rightWristY = 0;
 var scoreleftwrist = 0;
 var scorerightwrist = 0;
-songplay = "";
+var song1;
+var song2;
+var songplay = "";
 function preload(){
     song1 = loadSound("s1.mp3");
     song2 = loadSound("s2.mp3");
@@ -27,16 +29,20 @@ function draw(){
         song1.play();
     }
 }
+function playsong(){
+    song1.play();
+    song1.setVolume(2);
+}
 function modelLoaded(){
     console.log("Model Loaded!");
 }
 function gotPoses(results){
     if (results.length > 0){
         leftWristX = results[0].pose.leftWrist.x;
-        leftWristY = results[0].pose.leftWrist.y;
+       leftWristY = results[0].pose.leftWrist.y;
         rightWristX = results[0].pose.rightWrist.x;
         rightWristY = results[0].pose.rightWrist.y;
-        scorerightwrist = results[0].pose.keypoints[10].score;
-        console.log("leftWrist X = " + leftWristX + "leftWrist Y = " + leftWristY + "rightWrist X = " + rightWristX + "rightWrist Y = " + rightWristY);
-    }
+       scorerightwrist = results[0].pose.keypoints[10].score;
+       console.log("leftWrist X = " + leftWristX + "leftWrist Y = " + leftWristY + "rightWrist X = " + rightWristX + "rightWrist Y = " + rightWristY);
+   }
 }
